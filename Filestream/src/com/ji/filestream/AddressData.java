@@ -10,6 +10,8 @@ public class AddressData implements Serializable {
 	private String email; 
 	private String phone;
 	private String address;
+	static final long serialVersionUID = 1L;
+	
 	
 	//transient keyword is that marks a member variable not to be serialized when it is persisted to streams of bytes.
 	private static transient BufferedReader in;
