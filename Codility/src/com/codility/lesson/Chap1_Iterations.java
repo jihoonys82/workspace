@@ -77,6 +77,13 @@ public class Chap1_Iterations {
 	
 	public static void loopingCollection_ex1( ) {
 		String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+		System.out.println(days);
+		for(int i=0;i<days.length;i++) {
+			System.out.println(days[i]);
+		}
+		
+		//foreach(String day in days)
+		
 		for(String day :days) {
 			System.out.println(day);
 		}
