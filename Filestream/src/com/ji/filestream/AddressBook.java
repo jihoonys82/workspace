@@ -13,15 +13,15 @@ import java.util.Vector;
 public class AddressBook {
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
-		File dir = new File("c:\\User\\Ji\\Desktop");
+		File dir = new File("C:\\Users\\Ji\\Desktop");
 		File file = new File(dir, "AddressData.dat");
-		Vector vc = new Vector();
+		Vector<AddressData> vc = new Vector<AddressData>();
 		
 		if(file.exists()) {
 			FileInputStream fis = new FileInputStream(file);
 			BufferedInputStream bis = new BufferedInputStream(fis);
 			ObjectInputStream ois = new ObjectInputStream(bis);
-			vc = (Vector)ois.readObject();
+			vc = (Vector<AddressData>)ois.readObject();
 			
 			ois.close();
 			bis.close();
@@ -50,6 +50,7 @@ public class AddressBook {
 				bos.close();
 				fos.close();
 				System.exit(0);
+				
 			} else {
 				System.out.println("wrong select");
 			}
