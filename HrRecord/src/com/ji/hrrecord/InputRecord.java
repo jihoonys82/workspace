@@ -2,6 +2,8 @@ package com.ji.hrrecord;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -14,16 +16,18 @@ import javax.swing.JTextField;
 
 /**
  * HR Data input window
+ * Date 2018.05.27
  * @author Ji
  * UI- comleted
- * Action - required
+ * Action - Fixing(btnSubmit), btnPhoto actionListener required 
  */
 public class InputRecord  {
 	
+	// Variables for frame size and location
 	private Dimension dimen, dimen1;
 	private int xpos, ypos;
 	
-	
+	//declare display components. 
 	JLabel lblIntro 	= new JLabel();
 			
 	JLabel lblName 		= new JLabel("Name");
@@ -124,10 +128,47 @@ public class InputRecord  {
 	}
 	
 	private void start() {
+		//Submit button Action 
+		btnSubmit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					writeRecord();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}	
+		});
+		
+		//Cancel Button Action 
+		btnCancel.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clearFields();
+			}
+			
+		});
+		
+		//Photo choose Action
+		btnPhoto.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO : Make pop-up(Spring Layout for photo select and receive photo file name and path. 
+				System.out.println("it is clicked. but It needs to be fix!");
+			}
+		});
 		
 	}
 	
-	private int writeRecord() throws IOException, ClassNotFoundException {
+	/**
+	 * Write new HRData in Fields to File and print the result in Result Label.
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	private void writeRecord() throws IOException, ClassNotFoundException {
 		if(nullCheck()) {
 			HRData data = new HRData();
 			data.setName(txtName.getText());
@@ -139,9 +180,11 @@ public class InputRecord  {
 			HrIo io = new HrIo();
 			io.fileWirte(data);
 			
-			return 1;
+			lblResult.setText("Data has been recorded.");
+			
+			clearFields();
 		} else {
-			return -1;
+			lblResult.setText("Please Fill all fields!");
 		}
 	}
 	
@@ -168,4 +211,5 @@ public class InputRecord  {
 		txtPhoto.setText("Select photo via \"Choose File\" button ==> ");
 		txtNote.setText("");
 	}
+	
 }

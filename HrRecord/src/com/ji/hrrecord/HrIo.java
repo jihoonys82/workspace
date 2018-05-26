@@ -86,7 +86,7 @@ public class HrIo {
 		
 		Random rand = new Random();
 		for (int i=0;i<3;i++) {
-			int index = rand.nextInt(dataSet.capacity()) +1 ;
+			int index = rand.nextInt(dataSet.capacity());
 			quizDataSet.add(dataSet.get(index));
 		}
 		return quizDataSet;
