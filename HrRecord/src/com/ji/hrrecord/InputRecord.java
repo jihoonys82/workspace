@@ -2,6 +2,7 @@ package com.ji.hrrecord;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -104,7 +105,7 @@ public class InputRecord  {
 		btnSubmit.setBounds(100, 370, 140, 30);
 		btnCancel.setBounds(250, 370, 140, 30);
 		
-		//Intro 
+		//Introduction 
 		lblIntro.setText("Please fill correct member record. All fields are required.");
 		
 		//Photo
@@ -126,9 +127,22 @@ public class InputRecord  {
 		
 	}
 	
-	private int writeRecord() {
-		
-		return -1;
+	private int writeRecord() throws IOException, ClassNotFoundException {
+		if(nullCheck()) {
+			HRData data = new HRData();
+			data.setName(txtName.getText());
+			data.setEmail(txtEmail.getText());
+			data.setPhone(txtPhone.getText());
+			data.setPhoto(txtPhoto.getText());
+			data.setNote(txtNote.getText());
+			
+			HrIo io = new HrIo();
+			io.fileWirte(data);
+			
+			return 1;
+		} else {
+			return -1;
+		}
 	}
 	
 	/**
@@ -153,6 +167,5 @@ public class InputRecord  {
 		txtPhone.setText("");
 		txtPhoto.setText("Select photo via \"Choose File\" button ==> ");
 		txtNote.setText("");
-		
 	}
 }
