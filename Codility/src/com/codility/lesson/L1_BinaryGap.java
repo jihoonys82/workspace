@@ -30,7 +30,6 @@ class BinaryGap_Solution {
 //			System.out.println("tocken :" +tocken);
 //			System.out.println("count :" +count);
 //			System.out.println("maxcount :" + maxcount);
-			
 		}
 		
 		
