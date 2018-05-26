@@ -1,47 +1,65 @@
 package com.ji.hrrecord;
 
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
  * HR Data input window
  * @author Ji
- *
+ * UI- comleted
+ * Action - required
  */
 public class InputRecord  {
 	
 	private Dimension dimen, dimen1;
 	private int xpos, ypos;
 	
-	JLabel lName = new JLabel("Name");
-	JLabel lClass = new JLabel("Class");
-	JLabel lPhone = new JLabel("Phone");
-	JLabel lNote = new JLabel("Note");
-	JLabel lPhoto = new JLabel("Photo");
 	
-	JTextField tName = new JTextField();
-	JTextField tClass = new JTextField();
-	JTextField tPhone = new JTextField();
-	JTextField tPhoto = new JTextField("Select picture");
-	JTextArea tNote = new JTextArea();
+	JLabel lblIntro 	= new JLabel();
+			
+	JLabel lblName 		= new JLabel("Name");
+	JTextField txtName	= new JTextField();
 	
-	JButton bPhoto = new JButton("Photo select");
+	JLabel lblEmail		= new JLabel("Email");
+	JTextField txtEmail	= new JTextField();
+	
+	JLabel lblPhone		= new JLabel("Phone");
+	JTextField txtPhone	= new JTextField();
+	
+	JLabel lblPhoto		= new JLabel("Photo");
+	JTextField txtPhoto = new JTextField();
+	JButton btnPhoto	= new JButton("Choose File");
+	
+	JLabel lblNote		= new JLabel("Note");
+	JTextArea txtNote 	= new JTextArea();
+	JScrollPane scrollNote	= new JScrollPane(txtNote); //Scrolling function for txtNote
+	
+	JButton btnSubmit	= new JButton("Submit");
+	JButton btnCancel	= new JButton("Cancel");
+	
+	JLabel lblResult	= new JLabel();
+	
+	JFrame frame		= new JFrame("Record Input");
 
-	JButton bSubmit = new JButton("Submit");
-	JButton bCancel = new JButton("Cancel");
-	
 	
 	InputRecord() {
-		JFrame frame = new JFrame("Data Input");
+
+		this.init();
+		this.start();
 		
+	}
+	
+	//frame configuration
+	private void init() {
+		//Frame initialization 
 		frame.setSize(800, 500);
 		dimen = Toolkit.getDefaultToolkit().getScreenSize();
 		dimen1 = frame.getSize();
@@ -49,101 +67,92 @@ public class InputRecord  {
 		ypos = (int)(dimen.getHeight()/2 - dimen1.getHeight()/2);
 		frame.setLocation(xpos, ypos);
 		frame.setResizable(false);
-		
-		GridBagLayout grid = new GridBagLayout();
-		GridBagConstraints gbc = new GridBagConstraints();
-		frame.setLayout(grid);
-		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.ipadx = 50;
-		gbc.ipady = 20;
-		frame.add(lName, gbc);
-		
-		gbc.gridx = 1;
-		gbc.gridy = 0;
-		gbc.ipadx = 100;
-		frame.add(tName, gbc);
-		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.gridx = 0; 
-		gbc.gridy = 1;
-		gbc.ipadx = 50;
-		frame.add(lPhone, gbc);
-		
-		gbc.gridx = 1;
-		gbc.gridy = 1;
-		gbc.ipadx = 100;
-		frame.add(tPhone, gbc);		
-				
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.gridx = 0; 
-		gbc.gridy = 2;
-		gbc.ipadx = 50;
-		frame.add(lClass, gbc);
-		
-		gbc.gridx = 1;
-		gbc.gridy = 2;
-		gbc.ipadx = 100;
-		frame.add(tClass, gbc);
 
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.gridx = 0; 
-		gbc.gridy = 3;
-		gbc.ipadx = 50;
-		frame.add(lNote, gbc);
+		//setup layout 	
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
 		
-		gbc.gridx = 1;
-		gbc.gridy = 3;
-		gbc.ipadx = 300;
-		gbc.ipady = 100;
-		frame.add(tNote, gbc);
+		panel.add(lblIntro);
+		panel.add(lblName);
+		panel.add(txtName);
+		panel.add(lblEmail);
+		panel.add(txtEmail);
+		panel.add(lblPhone);
+		panel.add(txtPhone);
+		panel.add(lblPhoto);
+		panel.add(txtPhoto);
+		panel.add(btnPhoto);
+		panel.add(lblNote);
+		panel.add(scrollNote);
+		panel.add(btnSubmit);
+		panel.add(btnCancel);
+		panel.add(lblResult);
 		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.gridx = 0; 
-		gbc.gridy = 4;
-		gbc.ipadx = 50;
-		gbc.ipady = 20;
-		frame.add(lPhoto, gbc);
+		//Set component size
+		lblIntro.setBounds(10, 10, 390, 30);
+		lblName.setBounds(50, 50, 50, 30);
+		txtName.setBounds(100, 50, 290, 30);
+		lblEmail.setBounds(50, 90, 50, 30);
+		txtEmail.setBounds(100, 90, 290, 30);
+		lblPhone.setBounds(50, 130, 50, 30);
+		txtPhone.setBounds(100, 130, 290, 30);
+		lblPhoto.setBounds(50, 170, 50, 30);
+		txtPhoto.setBounds(100, 170, 290, 30);
+		btnPhoto.setBounds(400, 170, 130, 30);
+		lblNote.setBounds(50, 210, 50, 30);
+		scrollNote.setBounds(100, 210, 290, 150);
+		btnSubmit.setBounds(100, 370, 140, 30);
+		btnCancel.setBounds(250, 370, 140, 30);
 		
-		gbc.gridx = 1;
-		gbc.gridy = 4;
-		gbc.ipadx = 50;
-		tPhoto.setEditable(false);
-		frame.add(tPhoto, gbc);
-		gbc.gridx = 2;
-		gbc.ipadx = 20;
-		frame.add(bPhoto, gbc);
+		//Intro 
+		lblIntro.setText("Please fill correct member record. All fields are required.");
 		
+		//Photo
+		txtPhoto.setText("Select photo via \"Choose File\" button ==> ");
+		txtPhoto.setEditable(false);
 		
-		gbc.gridx = 1;
-		gbc.gridy = 5;
-		gbc.ipadx = 30;
-		frame.add(bSubmit, gbc);
-		gbc.gridx = 2;
-		gbc.ipadx = 30;
-		frame.add(bCancel, gbc);
+		//textNote 
+		txtNote.setLineWrap(true);
 		
+		frame.add(panel);
 		
-		this.init();
-		this.start();
-		
-		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		
-	}
-	
-	//frame configuration
-	private void init() {
-		
-		
-		
 		
 		
 	}
 	
 	private void start() {
+		
+	}
+	
+	private int writeRecord() {
+		
+		return -1;
+	}
+	
+	/**
+	 * null chuck for all input cell. 
+	 * @return if there is no null value return true.
+	 */
+	private boolean nullCheck() {
+		if(txtName.getText() == null) return false;
+		if(txtEmail.getText() == null) return false;
+		if(txtPhone.getText() == null) return false;
+		if(txtPhoto.getText() ==  null) return false;
+		if(txtNote.getText() == null) return false; 
+		return true;
+	}
+	
+	/**
+	 * Clear all input fields.
+	 */
+	private void clearFields() {
+		txtName.setText("");
+		txtEmail.setText("");
+		txtPhone.setText("");
+		txtPhoto.setText("Select photo via \"Choose File\" button ==> ");
+		txtNote.setText("");
 		
 	}
 }
