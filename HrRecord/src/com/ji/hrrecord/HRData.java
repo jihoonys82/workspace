@@ -1,12 +1,17 @@
 package com.ji.hrrecord;
 
-import java.io.BufferedReader;
+//import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 
-public class HRData implements Serializable {
-	static final long serialVersionUID = 1L;
+
+/**
+ * Class for HRData object only containing person infomation
+ * @author Ji
+ *
+ */
+public class HRData {
 	private String name;
 	private String email;
 	private String phone;
@@ -53,16 +58,21 @@ public class HRData implements Serializable {
 		this.note = note;
 	}
 
-	private static transient BufferedReader in; 
-	static  {
-		in = new BufferedReader(new InputStreamReader(System.in));
+	public HRData() {
+		
 	}
 	
-	public HRData() throws IOException {
-		setName(in.readLine());
-		setEmail(in.readLine());
-		setPhone(in.readLine());
-		setPhoto(in.readLine());
-		setNote(in.readLine());
-	}
+	// Below is for console Input test.
+//	private static transient BufferedReader in; 
+//	static  {
+//		in = new BufferedReader(new InputStreamReader(System.in));
+//	}
+//	
+//	public HRData() throws IOException {
+//		setName(in.readLine());
+//		setEmail(in.readLine());
+//		setPhone(in.readLine());
+//		setPhoto(in.readLine());
+//		setNote(in.readLine());
+//	}
 }

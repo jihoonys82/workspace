@@ -127,6 +127,9 @@ public class InputRecord  {
 		
 	}
 	
+	/**
+	 * action configuration
+	 */
 	private void start() {
 		//Submit button Action 
 		btnSubmit.addActionListener(new ActionListener() {
@@ -135,6 +138,7 @@ public class InputRecord  {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					writeRecord();
+					
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}

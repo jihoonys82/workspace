@@ -12,7 +12,7 @@ import java.util.Random;
 import java.util.Vector;
 
 public class HrIo {
-	private static String dirpath = ".\\Data\\";
+	private static String dirpath = ".\\Data";
 	private static String filepath = "hrdata.dat";
 	File dir = new File(dirpath);
 	File file = new File(dir, filepath);
@@ -25,7 +25,7 @@ public class HrIo {
 	public void fileWirte(HRData data) throws IOException, ClassNotFoundException {
 		dataSet.add(data);
 		
-		FileOutputStream fos = new FileOutputStream(dir);
+		FileOutputStream fos = new FileOutputStream(file);
 		BufferedOutputStream bos = new BufferedOutputStream(fos);
 		ObjectOutputStream oos = new ObjectOutputStream(bos);
 		oos.writeObject(dataSet);
