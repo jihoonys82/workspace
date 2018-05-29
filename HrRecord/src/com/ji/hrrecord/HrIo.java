@@ -12,11 +12,11 @@ import java.util.Random;
 import java.util.Vector;
 
 public class HrIo {
-	private static String dirpath = ".\\Data";
-	private static String filepath = "hrdata.dat";
+	private static final String dirpath = ".\\Data";
+	private static final String filepath = "hrdata.dat";
 	File dir = new File(dirpath);
 	File file = new File(dir, filepath);
-		
+	
 	private Vector<HRData> dataSet = new Vector<>();
 	
 	public HrIo() {
@@ -24,7 +24,6 @@ public class HrIo {
 	
 	public void fileWirte(HRData data) throws IOException, ClassNotFoundException {
 		dataSet.add(data);
-		
 		FileOutputStream fos = new FileOutputStream(file);
 		BufferedOutputStream bos = new BufferedOutputStream(fos);
 		ObjectOutputStream oos = new ObjectOutputStream(bos);

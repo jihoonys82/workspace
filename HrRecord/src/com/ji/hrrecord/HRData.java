@@ -1,17 +1,15 @@
 package com.ji.hrrecord;
 
 //import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.Serializable;
 
 
 /**
- * Class for HRData object only containing person infomation
+ * Class for HRData object only containing person information
  * @author Ji
  *
  */
-public class HRData {
+public class HRData implements Serializable {
 	private String name;
 	private String email;
 	private String phone;
